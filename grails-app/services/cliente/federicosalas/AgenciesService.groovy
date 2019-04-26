@@ -40,7 +40,7 @@ class AgenciesService {
         }
 
         if (payment_method_id == " ") {
-            throw new ValidationException("El limite de cantidad de agencias de respuersta no puede ser nulo")
+            throw new ValidationException("El metodo de pago no puede ser nulo")
         }
     }
 
