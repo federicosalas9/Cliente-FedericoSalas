@@ -3,7 +3,7 @@ package cliente.federicosalas
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class AgencieSpec extends Specification implements DomainUnitTest<Agencie> {
+class AgencySpec extends Specification implements DomainUnitTest<Agency> {
 
     def setup() {
     }

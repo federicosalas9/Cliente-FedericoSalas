@@ -27,6 +27,19 @@
     <g:each var="a" in="${agencies}">
         <p>
             Descripcion: ${a.description}, Direccion: ${a.address.address_line},${a.address.city}
+
+        <g:form controller = "Agency" action ="save" >
+            <fieldset class="buttons">
+                <g:submitButton name="Like" value ="Like"/>
+            </fieldset>
+        </g:form>
+
+        <g:form controller = "Agency" action ="delete" >
+            <fieldset class="buttons">
+                <g:submitButton name="Unlike" value ="Unlike"/>
+            </fieldset>
+        </g:form>
+
         </p>
     </g:each>
 </div>

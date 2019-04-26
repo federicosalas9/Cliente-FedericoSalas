@@ -1,6 +1,6 @@
 package cliente.federicosalas
 
-class Agencie {
+class Agency {
 
     Address address
     String agency_code

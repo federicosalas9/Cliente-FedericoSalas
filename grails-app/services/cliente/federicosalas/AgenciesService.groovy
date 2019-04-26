@@ -9,9 +9,38 @@ import javax.xml.bind.ValidationException
 class AgenciesService {
 
     def validarFormulario(String site_id, String payment_method_id, String latitud,
-                          String longitud, String radio, String limit, String offset, String criterio){
-        if(site_id==" "){
-            throw new ValidationException("El siteid no puede ser nulo")
+                          String longitud, String radio, String limit, String offset, String criterio) {
+        if (site_id == " " || site_id.length() > 3) {
+            throw new ValidationException("El siteid no puede ser nulo ni mayor a 3 caracteres")
+        }
+
+        if (payment_method_id == " " || payment_method_id.equals("distance") || payment_method_id.equals("address_line") || payment_method_id.equals("agency_code")) {
+            throw new ValidationException("El metodo de pago no puede ser nulo " +
+                    "y debe tener alguno de los sig. valores:distance, agency_code o address_line")
+        }
+
+        if (latitud == " ") {
+            throw new ValidationException("La latitud no puede ser nula")
+        }
+
+        if (longitud == " ") {
+            throw new ValidationException("La longitud no puede ser nula")
+        }
+
+        if (radio == " ") {
+            throw new ValidationException("El radio no puede ser nulo")
+        }
+
+        if (limit == " ") {
+            throw new ValidationException("El limite de cantidad de agencias de respuersta no puede ser nulo")
+        }
+
+        if (offset == " ") {
+            throw new ValidationException("El offset no puede ser nulo")
+        }
+
+        if (criterio == " ") {
+            throw new ValidationException("El limite de cantidad de agencias de respuersta no puede ser nulo")
         }
     }
 
@@ -19,7 +48,7 @@ class AgenciesService {
     def mostrarSitios(String site_id, String payment_method_id, String latitud,
                       String longitud, String radio, String limit, String offset, String criterio) {
         def urlSitios = new URL('http://localhost:8000/agencias/' + site_id + '/' + payment_method_id +
-                '?offset='+offset+'&near_to='+latitud+','+longitud+','+radio+'&limit='+limit+'&criterio='+criterio)
+                '?offset=' + offset + '&near_to=' + latitud + ',' + longitud + ',' + radio + '&limit=' + limit + '&criterio=' + criterio)
         def connection = (HttpURLConnection) urlSitios.openConnection()
         connection.setRequestMethod("GET")
         connection.setRequestProperty("Accept", "application/json")
