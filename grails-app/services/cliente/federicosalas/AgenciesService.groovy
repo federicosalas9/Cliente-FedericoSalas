@@ -3,8 +3,17 @@ package cliente.federicosalas
 import grails.gorm.transactions.Transactional
 import groovy.json.JsonSlurper
 
+import javax.xml.bind.ValidationException
+
 @Transactional
 class AgenciesService {
+
+    def validarFormulario(String site_id, String payment_method_id, String latitud,
+                          String longitud, String radio, String limit, String offset, String criterio){
+        if(site_id==" "){
+            throw new ValidationException("El siteid no puede ser nulo")
+        }
+    }
 
     //Funcion que se en carga de hacer un requerimiento a la API Agencies segun los datos cargados en el formulario
     def mostrarSitios(String site_id, String payment_method_id, String latitud,

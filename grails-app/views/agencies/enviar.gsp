@@ -26,7 +26,7 @@
 <div>
     <g:each var="a" in="${agencies}">
         <p>
-            ${a.description}
+            Descripcion: ${a.description}, Direccion: ${a.address.address_line},${a.address.city}
         </p>
     </g:each>
 </div>
