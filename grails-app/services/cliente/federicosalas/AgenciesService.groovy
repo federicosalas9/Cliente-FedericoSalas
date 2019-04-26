@@ -14,17 +14,17 @@ class AgenciesService {
             throw new ValidationException("El siteid no puede ser nulo ni mayor a 3 caracteres")
         }
 
-        if (payment_method_id == " " || payment_method_id.equals("distance") || payment_method_id.equals("address_line") || payment_method_id.equals("agency_code")) {
-            throw new ValidationException("El metodo de pago no puede ser nulo " +
+        if (criterio == " " || payment_method_id.equals("distance") || payment_method_id.equals("address_line") || payment_method_id.equals("agency_code")) {
+            throw new ValidationException("El criterio no puede ser nulo " +
                     "y debe tener alguno de los sig. valores:distance, agency_code o address_line")
         }
 
-        if (latitud == " ") {
-            throw new ValidationException("La latitud no puede ser nula")
+        if (latitud == " "||latitud.length()>10) {
+            throw new ValidationException("La latitud no puede ser nula ni mayor a 10 caracteres incluyendo el - y el .")
         }
 
-        if (longitud == " ") {
-            throw new ValidationException("La longitud no puede ser nula")
+        if (longitud == " "||longitud.length()>9) {
+            throw new ValidationException("La longitud no puede ser nula ni mayor a 9 caracteres incluyendo el - y el .")
         }
 
         if (radio == " ") {
@@ -39,7 +39,7 @@ class AgenciesService {
             throw new ValidationException("El offset no puede ser nulo")
         }
 
-        if (criterio == " ") {
+        if (payment_method_id == " ") {
             throw new ValidationException("El limite de cantidad de agencias de respuersta no puede ser nulo")
         }
     }
